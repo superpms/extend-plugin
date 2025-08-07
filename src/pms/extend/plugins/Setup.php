@@ -10,7 +10,7 @@ class Setup implements LifecycleInterface
 
     protected static string $rootPath;
 
-    public static function start(string $rootPath, \pms\core\boot\Options $bootOptions)
+    public static function start(string $rootPath, \pms\program\boot\Options $bootOptions)
     {
 
         static::$rootPath = $rootPath;
@@ -21,7 +21,7 @@ class Setup implements LifecycleInterface
         static::initPluginAutoloadFile($bootOptions);
     }
 
-    protected static function initPluginAutoloadFile(\pms\core\boot\Options $bootOptions): void{
+    protected static function initPluginAutoloadFile(\pms\program\boot\Options $bootOptions): void{
         $pluginDir = path_join(static::$rootPath,$bootOptions->extend?->plugins ?? '/plugins');
         Path::mount('pluginsRoot',$pluginDir);
         $autoloadPackFile = Path::getPluginsRoot('autoload.php');
