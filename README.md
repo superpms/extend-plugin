@@ -1,4 +1,4 @@
-pms extend plugin
+pms framework plugin extend
 ===============
 pms 插件 扩展
 

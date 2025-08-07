@@ -4,7 +4,7 @@ namespace pms\app;
 
 use pms\facade\Path;
 
-trait Plugins
+trait PluginsApp
 {
 
     protected static array $config = [];
