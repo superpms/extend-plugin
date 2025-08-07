@@ -8,10 +8,9 @@ use pms\facade\Path;
 class Setup implements LifecycleInterface
 {
 
-    protected static  string $rootPath;
+    protected static string $rootPath;
 
-    const configKey = '--pms-plugins-autoload';
-    public static function start(string $rootPath)
+    public static function start(string $rootPath, \pms\core\boot\Options $bootOptions)
     {
 
         static::$rootPath = $rootPath;
