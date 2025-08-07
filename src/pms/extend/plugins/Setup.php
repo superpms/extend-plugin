@@ -18,11 +18,11 @@ class Setup implements LifecycleInterface
         /**
          * 加载插件autoload文件
          */
-        static::initPluginAutoloadFile();
+        static::initPluginAutoloadFile($bootOptions);
     }
 
-    protected static function initPluginAutoloadFile(): void{
-        $pluginDir = path_join(static::$rootPath,config('plugins.root','plugins'));
+    protected static function initPluginAutoloadFile(\pms\core\boot\Options $bootOptions): void{
+        $pluginDir = path_join(static::$rootPath,$bootOptions->extend?->plugins ?? '/plugins');
         Path::mount('pluginsRoot',$pluginDir);
         $autoloadPackFile = Path::getPluginsRoot('autoload.php');
         if (is_file($autoloadPackFile)) {
