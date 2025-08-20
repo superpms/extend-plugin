@@ -55,7 +55,7 @@ class PluginInstallCommand extends TerminalCommandApp
             $this->output->end();
         }
         $autoloadFile = Path::getPluginsRoot($name ,"autoload.php");
-        $autoloadPackFile = Path::getPluginsRoot('autoload.php');
+        $autoloadPackFile = Path::getPluginsRoot('installed.php');
         if(is_file($autoloadFile)){
             $pluginsAutoloadPack = include $autoloadPackFile;
             $pluginsAutoloadPack = [
@@ -71,8 +71,8 @@ class PluginInstallCommand extends TerminalCommandApp
                 $epStr .= "    " . "'" . $v . "'";
             }
             $epStr .= "\r\n];";
-            $packCode = "<?php\r\n // 需要加载 autoload.php 文件的插件名称集合 \r\n$epStr\r\n";
-            file_create(Path::getPluginsRoot('/autoload.php'), $packCode);
+            $packCode = "<?php\r\n // 需要自动加载 autoload.php 文件的插件名称集合 \r\n$epStr\r\n";
+            file_create(Path::getPluginsRoot('/installed.php'), $packCode);
         }
         $this->output->writeArrayBlock([
             $this->output->setBoldStr($this->output->setColorStr(TERMINAL_COLOR_GREEN, "【插件安装成功】")),

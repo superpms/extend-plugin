@@ -24,7 +24,7 @@ class Setup implements LifecycleInterface
     protected static function initPluginAutoloadFile(\pms\program\boot\Options $bootOptions): void{
         $pluginDir = path_join(static::$rootPath,$bootOptions->extend?->plugins ?? '/plugins');
         Path::mount('pluginsRoot',$pluginDir);
-        $autoloadPackFile = Path::getPluginsRoot('autoload.php');
+        $autoloadPackFile = Path::getPluginsRoot('installed.php');
         if (is_file($autoloadPackFile)) {
             $pluginsConfig = include $autoloadPackFile;
             foreach ($pluginsConfig as $item) {
