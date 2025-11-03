@@ -37,7 +37,7 @@ class PluginInstallCommand extends TerminalCommandApp
         }
         $path = Path::getPluginsRoot($name, "/plugin.json");
         if (!is_file($path)) {
-            $this->output->writeLn("插件目录不存在");
+            $this->output->writeLn("插件项目不支持");
             $this->output->end();
         }
         $info = file_get_contents($path);
