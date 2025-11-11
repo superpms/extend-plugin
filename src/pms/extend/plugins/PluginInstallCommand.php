@@ -24,7 +24,8 @@ class PluginInstallCommand extends TerminalCommandApp
     #[Inject(TerminalOutputInject::class)]
     protected TerminalOutputInject $output;
 
-    public function entry(){
+    public function entry(): void
+	{
         $name = $this->input->getArgument('name');
         if (empty($name)) {
             $this->output->writeLn("请输入插件名称");
