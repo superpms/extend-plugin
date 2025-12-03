@@ -17,7 +17,7 @@ trait PluginsApp
         return join('/', $name);
     }
 
-    final protected static function config(string $name = null, $default = null){
+    final protected static function config(?string $name = null, $default = null){
         $pluginName = static::getName();
         if (isset(static::$config[$pluginName])) {
             $config = static::$config[$pluginName];
@@ -35,7 +35,7 @@ trait PluginsApp
         return $data !== null ? $data : $default;
     }
 
-    final protected static function path($suffix = null): string{
+    final protected static function path(?string $suffix = null): string{
         if (!empty($suffix) && !str_starts_with($suffix, "/")) {
             $suffix = "/" . $suffix;
         }
