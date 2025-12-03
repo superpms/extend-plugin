@@ -3,15 +3,15 @@
 namespace pms\extend\plugins;
 
 use pms\contract\LifecycleInterface;
+use pms\facade\BootOptions;
 use pms\facade\Path;
-use pms\program\boot\Options;
 
 class Setup implements LifecycleInterface
 {
 
     protected static string $rootPath;
 
-    public static function entry(string $rootPath, Options $bootOptions): void
+    public static function entry(string $rootPath): void
 	{
 
         static::$rootPath = $rootPath;
@@ -19,11 +19,11 @@ class Setup implements LifecycleInterface
         /**
          * 加载插件autoload文件
          */
-        static::initPluginAutoloadFile($bootOptions);
+        static::initPluginAutoloadFile();
     }
 
-    protected static function initPluginAutoloadFile(Options $bootOptions): void{
-        $pluginDir = path_join(static::$rootPath,$bootOptions->extend?->plugins ?? '/plugins');
+    protected static function initPluginAutoloadFile(): void{
+        $pluginDir = path_join(static::$rootPath,BootOptions::get_extend('plugins','/plugins'));
         Path::mount('pluginsRoot',$pluginDir);
         $autoloadPackFile = Path::getPluginsRoot('installed.php');
         if (is_file($autoloadPackFile)) {
