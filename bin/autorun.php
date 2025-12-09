@@ -11,7 +11,6 @@ if(class_exists('\pms\hook\LifecycleHook')){
 
 if(class_exists('\pms\hook\TerminalCommandHook')){
     TerminalCommandHook::mount(
-        'plugin-install',
         PluginInstallCommand::class
     );
 }

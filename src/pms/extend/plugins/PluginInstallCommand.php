@@ -10,7 +10,7 @@ use pms\inject\TerminalOutputInject;
 class PluginInstallCommand extends TerminalCommandApp
 {
     protected string $name = "plugin-install";
-    protected string $description = "插件安装";
+    protected string $description = "pms插件安装";
     protected array $validate = [
         'name' => [
             'type' => COMMAND_ARGUMENT_TYPE,
